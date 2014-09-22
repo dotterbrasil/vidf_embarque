@@ -23,4 +23,6 @@
     <preference name="webviewbounce"    value="false" />
 
     <icon src="icon.png" />
+    <gap:splash src="icon.png" />
+
 </widget>
