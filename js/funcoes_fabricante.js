@@ -96,8 +96,10 @@ valida = validacnpj(entrada);
 }
 
 function validadestino(){
-entrada = document.formulario.fdestino.value;
-valida = validacnpj(entrada);
+
+	entrada = document.formulario.fdestino.value;
+	valida = validacnpj(entrada);
+
 }
 
 
