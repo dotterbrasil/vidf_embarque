@@ -15,9 +15,9 @@ $registros = $_POST["registros"];
 $contador = $registros*$campos;
 
 $anvisa = $_POST["fanvisa"];
-$serial = $_POST["fserial"];
+$identificador = $_POST["fserial"];
 $lote = $_POST["flote"];
-$validade = $_POST["fvalidade"];$validade = str_replace("/","",$validade);
+$validade = $_POST["fvalidade"];//$validade = str_replace("/","",$validade);
 $destino = $_POST["fdestino"];
 $transportadora = $_POST["ftransportadora"];
 $nfe = $_POST["fnfe"];
@@ -45,7 +45,7 @@ if(file_exists($licenca)) {
 
 				$serial = $dados[$x];
 
-				$conteudo2 =  date("d/m/Y - h:i:sa")." - ID: ".$id."\r\n Natureza: ".$natureza." - NFe: ".$nfe."\r\n Origem: ".$origem."\r\n Destino: ".$destino."\r\n Transportadora: ".$transportadora."\r\n -----------------------------------------------------------\r\n";
+				$conteudo2 =  "Evento: ".str_pad(time(), 12, "0", STR_PAD_LEFT)."\r\n Natureza: ".$natureza."\r\n Data Ocorrencia: ".date("d/m/Y - h:i:sa")." - ID: ".$id." - NFe: ".$nfe."\r\n Origem: ".$origem."\r\n Destino: ".$destino."\r\n Transportadora: ".$transportadora."\r\n -----------------------------------------------------------\r\n";
 
 				$endereco = $anvisa."/".$lote."/".$serial;
 
