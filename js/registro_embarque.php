@@ -67,7 +67,7 @@ if(file_exists($licenca)) {
 							fwrite($fp2, $endereco);
 							fclose($fp2);
 							fclose($fp);
-							exit("CNPJ destino diferente! Atencao: Esta tentativa de acesso foi identificada e registrada. O uso indevido de dispositivos e licencas, assim como a tentativa de acesso nao autorizado configuram infracao prevista no codigo penal brasileiro e estao sujeitas a acoes judiciais.");
+							exit("Voce nao possui a custodia deste item! Atencao: Esta tentativa de acesso foi identificada e registrada. O uso indevido de dispositivos e licencas, assim como a tentativa de acesso nao autorizado configuram infracao prevista no codigo penal brasileiro e estao sujeitas a acoes judiciais.");
 							}
 						if(substr($historico,(strrpos($historico,"Natureza:")+10),(strrpos($historico,"Data")-(strrpos($historico,"Natureza:")+13)))=="(1) venda") {
 							$natureza = "(1) compra";
