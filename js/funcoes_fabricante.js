@@ -164,7 +164,7 @@ function validaArquivo(){
 
 function envio(){
 
-texto_alerta = "Dados Invalidos!"; alert(document.location.href);
+texto_alerta = "Dados Invalidos!";
 
 if (document.location.href="recebimento") { valida = 1; }
 

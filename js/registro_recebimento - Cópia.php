@@ -1,4 +1,7 @@
 <?php
+
+$cnpj_licenca = "00762956000120";
+
 $conteudo = "";
 $registro = "";
 $distribuidor = "";
@@ -6,7 +9,7 @@ $zona = "";
 $embarque = "";
 $auxiliar = chr(39);
 $id = "1";
-$origem = "00762956000120";
+$origem = $cnpj_licenca;
 
 $conteudo = stripslashes($_POST["conteudo"]);
 $campos = $_POST["campos"];
@@ -45,11 +48,47 @@ if(file_exists($licenca)) {
 
 				$serial = $dados[$x];
 
-				$conteudo2 =  "Evento: ".str_pad(time(), 12, "0", STR_PAD_LEFT)."\r\n Natureza: ".$natureza."\r\n Data Ocorrencia: ".date("d/m/Y - h:i:sa")." - ID: ".$id." - NFe: ".$nfe."\r\n Origem: ".$origem."\r\n Destino: ".$destino."\r\n Transportadora: ".$transportadora."\r\n -----------------------------------------------------------\r\n";
 
 				$endereco = $anvisa."/".$lote."/".$serial;
 
 				$FILE = "../".$endereco.".vid";
+
+				if(file_exists($FILE)) {
+
+					$fp = fopen($FILE, "r");
+					$historico = fread($fp,filesize($FILE));
+					if(strrpos($historico,"Origem:")>0) {
+						$origem_anterior = substr($historico,(strrpos($historico,"Origem:")+8),14);
+						$destino_anterior = substr($historico,(strrpos($historico,"Destino:")+9),14);
+						if($destino_anterior!=$cnpj_licenca) {
+							$endereco = date("d/m/Y - h:i:sa")." - ".$endereco." - Recebimento cnpj inconsistente: ".$cnpj_licenca." - IP: ".$_SERVER["REMOTE_ADDR"]." - HOST: ".$_SERVER["REMOTE_HOST"]." - PORT: ".$_SERVER["REMOTE_PORT"].chr(10).chr(13)."\r\n";
+							$FILE2 = "../alertas/log_de_erros.txt";
+							$fp2 = fopen($FILE2, "a+");
+							fwrite($fp2, $endereco);
+							fclose($fp2);
+							fclose($fp);
+							exit("Voce nao possui a custodia deste item! Atencao: Esta tentativa de acesso foi identificada e registrada. O uso indevido de dispositivos e licencas, assim como a tentativa de acesso nao autorizado configuram infracao prevista no codigo penal brasileiro e estao sujeitas a acoes judiciais.");
+							}
+						if(substr($historico,(strrpos($historico,"Natureza:")+10),3)!="(3)") {
+							$endereco = date("d/m/Y - h:i:sa")." - ".$endereco." - Recebimento sem Remessa: ".$cnpj_licenca." - IP: ".$_SERVER["REMOTE_ADDR"]." - HOST: ".$_SERVER["REMOTE_HOST"]." - PORT: ".$_SERVER["REMOTE_PORT"].chr(10).chr(13)."\r\n";
+							$FILE2 = "../alertas/log_de_erros.txt";
+							$fp2 = fopen($FILE2, "a+");
+							fwrite($fp2, $endereco);
+							fclose($fp2);
+							fclose($fp);
+							exit("Nao e possivel receber este item pois nao existe registro de envio! Entre em contato com seu fornecedor. Atencao: Esta tentativa de acesso foi identificada e registrada. O uso indevido de dispositivos e licencas, assim como a tentativa de acesso nao autorizado configuram infracao prevista no codigo penal brasileiro e estao sujeitas a acoes judiciais.");
+							}
+						if(substr($historico,(strrpos($historico,"Natureza:")+10),(strrpos($historico,"Data")-(strrpos($historico,"Natureza:")+13)))=="(3) entrega - (1) venda") {
+							$natureza = "(2) recebimento - (1) compra";
+							}
+							else {
+								$natureza = str_replace("(3) entrega","(2) recebimento",$natureza);
+							}
+						}
+					fclose($fp);
+					}	
+
+				$conteudo2 =  "Evento: ".str_pad(time(), 12, "0", STR_PAD_LEFT)."\r\n Natureza: ".$natureza."\r\n Data Ocorrencia: ".date("d/m/Y - h:i:sa")." - ID: ".$id."\r\n -----------------------------------------------------------\r\n";
 
 				if(file_exists($FILE)) {
 					$fp = fopen($FILE, "a+");
