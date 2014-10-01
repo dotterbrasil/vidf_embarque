@@ -172,7 +172,7 @@ if (valida) {
 		parent.VID.formulario.submit();
 
 		vid = document.formulario.fid.value;
-		reset();
+		document.formulario.reset();
 		document.formulario.fid.value = vid;
 		
 	} else {alert(texto_alerta);}
