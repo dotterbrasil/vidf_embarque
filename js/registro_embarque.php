@@ -70,7 +70,7 @@ if(file_exists($licenca)) {
 						$origem_anterior = substr($historico,(strrpos($historico,"Origem:")+8),14);
 						$destino_anterior = substr($historico,(strrpos($historico,"Destino:")+9),14);
 						if($destino_anterior!=$cnpj_licenca) {
-							$endereco = date("d/m/Y - h:i:sa")." - ".$endereco." - Tentativa cnpj: ".$cnpj_licenca." - IP: ".$_SERVER["REMOTE_ADDR"]." - HOST: ".$_SERVER["REMOTE_HOST"]." - PORT: ".$_SERVER["REMOTE_PORT"].chr(10).chr(13)."\r\n";
+							$endereco = date("d/m/Y - h:i:sa")." - ".$endereco." - Remessa sem custodia: ".$cnpj_licenca." - IP: ".$_SERVER["REMOTE_ADDR"]." - HOST: ".$_SERVER["REMOTE_HOST"]." - PORT: ".$_SERVER["REMOTE_PORT"].chr(10).chr(13)."\r\n";
 							$FILE2 = "../alertas/log_de_erros.txt";
 							$fp2 = fopen($FILE2, "a+");
 							fwrite($fp2, $endereco);

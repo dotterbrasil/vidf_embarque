@@ -170,6 +170,11 @@ if (document.location.href="recebimento") { valida = 1; }
 
 if (valida) {
 		parent.VID.formulario.submit();
+
+		vid = document.formulario.fid.value;
+		reset();
+		document.formulario.fid.value = vid;
 		
 	} else {alert(texto_alerta);}
+
 }
