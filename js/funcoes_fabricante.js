@@ -173,6 +173,7 @@ if (valida) {
 
 		vid = document.formulario.fid.value;
 		document.formulario.reset();
+		document.getElementById("texto").value = "";
 		document.formulario.fid.value = vid;
 		
 	} else {alert(texto_alerta);}
