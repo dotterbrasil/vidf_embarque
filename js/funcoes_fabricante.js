@@ -163,7 +163,11 @@ function validaArquivo(){
 
 
 function envio(){
-texto_alerta = "Dados Invalidos!";
+
+texto_alerta = "Dados Invalidos!"; alert(document.location.href);
+
+if (document.location.href="recebimento") { valida = 1; }
+
 if (valida) {
 		parent.VID.formulario.submit();
 		
