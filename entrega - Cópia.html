@@ -122,6 +122,10 @@ background-position: 5px 10px;
 <INPUT TYPE="radio" NAME="fnatureza" id="fnatureza" onchange = "document.getElementById('fnatureza').value = '(3) entrega - (5) recolhimento'"> Recolhimento<BR>
 <INPUT TYPE="radio" NAME="fnatureza" id="fnatureza" onchange = "document.getElementById('fnatureza').value = '(3) entrega - (6) amostra gratis'"> Amostra Gratis<BR>
 
+CNPJ Destino:<BR><input type="text" name="fdestino" id="fdestino" MAXLENGTH='14' SIZE='14' onChange="validadestino()"><BR>
+CNPJ Transportadora:<BR><input type="text" name="ftransportadora" id="ftransportadora" MAXLENGTH='14' SIZE='14' onblur="validatransportadora()"><BR>
+Numero da NF:<BR><input type="text" name="fnfe" id="fnfe"><BR>
+
 
 </div>
 
@@ -133,9 +137,6 @@ background-position: 5px 10px;
 <input type="button" value="Gera OTP"  onClick="senha_otp()">
 
 <BR>_____________________________________________________________________________________<BR>
-
-CNPJ Destino:<BR><input type="text" name="fdestino" id="fdestino" SIZE='100'><BR>
-CNPJ Transportadora:<BR><input type="text" name="ftransportadora" id="ftransportadora" SIZE='100'><BR>
 
 
 <INPUT TYPE="hidden" NAME="conteudo" id="conteudo">

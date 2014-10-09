@@ -1,6 +1,6 @@
 var valida = false;
 
-function le_nota_nfe(chave){
+function le_nota(chave){
 
 cnpj = "00762956000120";
 
@@ -26,17 +26,6 @@ if (tamanho==44) {
 		texto_alerta = "Chave de Acesso Invalida";
 		alert(texto_alerta);
 	}
-}
-
-function le_nota(qrcode){
-
-document.formulario.fnatureza = qrcode.substring(10,qrcode.IndexOf( - Destino));
-
-document.formulario.fdestino = qrcode.substring(16,qrcode.IndexOf( - Transportadora));
-
-document.formulario.ftransportadora = qrcode.substring(qrcode.IndexOf(Transportadora)+23,qrcode.length);
-
-
 }
 
 
