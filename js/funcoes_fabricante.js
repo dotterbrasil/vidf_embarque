@@ -28,9 +28,8 @@ if (tamanho==44) {
 	}
 }
 
-function le_nota(qrcode){texto = qrcode;alert(texto);
+function le_nota(qrcode){
 
-texto = qrcode.substring(10,qrcode.IndexOf( - Destino));alert(texto);
 
 document.formulario.fnatureza.value = qrcode.substring(10,qrcode.IndexOf( - Destino));
 
