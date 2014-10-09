@@ -30,11 +30,11 @@ if (tamanho==44) {
 
 function le_nota(qrcode){
 
-document.formulario.fnatureza = qrcode.substring(10,qrcode.IndexOf( - Destino));
+document.formulario.fnatureza.value = qrcode.substring(10,qrcode.IndexOf( - Destino));
 
-document.formulario.fdestino = qrcode.substring(16,qrcode.IndexOf( - Transportadora));
+document.formulario.fdestino.value = qrcode.substring(16,qrcode.IndexOf( - Transportadora));
 
-document.formulario.ftransportadora = qrcode.substring(qrcode.IndexOf(Transportadora)+23,qrcode.length);
+document.formulario.ftransportadora.value = qrcode.substring(qrcode.IndexOf(Transportadora)+23,qrcode.length);
 
 
 }
