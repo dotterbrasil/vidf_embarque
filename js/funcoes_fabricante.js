@@ -179,6 +179,7 @@ function envio(){
 
 texto_alerta = "Dados Invalidos!";
 
+validadestino();
 
 if (document.location.href.indexOf("recebimento")>0)
 	{
