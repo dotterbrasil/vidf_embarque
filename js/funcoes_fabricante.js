@@ -178,13 +178,14 @@ function envio(){
 
 texto_alerta = "Dados Invalidos!";
 
-if (document.location.href="recebimento")
+
+if (document.location.href.indexOf("recebimento")>0)
 	{
-	valida = 1;
+	valida = true;
 	} else {
-		if (document.formulario.fdestino.value="") {valida = -1;}
-		if (document.formulario.ftransportadora.value="") {valida = -1;}
-		if (document.formulario.fnatureza.value="") {valida = -1;}
+		if (document.formulario.fdestino.value=="") {valida = false;}
+		if (document.formulario.ftransportadora.value=="") {valida = false;}
+		if (document.formulario.fnatureza.value=="") {valida = false;}
 		}
 
 if (valida) {
