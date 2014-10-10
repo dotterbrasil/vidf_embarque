@@ -100,7 +100,14 @@ if(file_exists($licenca)) {
 							}
 						}
 						else {
-							exit("Item nao disponivel para recebimento.");
+							$endereco = date("d/m/Y - h:i:sa")." - ".$endereco." - Recebimento sem Remessa: ".$cnpj_licenca." - IP: ".$_SERVER["REMOTE_ADDR"]." - HOST: ".$_SERVER["REMOTE_HOST"]." - PORT: ".$_SERVER["REMOTE_PORT"].chr(10).chr(13)."\r\n";
+							$FILE2 = "../alertas/log_de_erros.txt";
+							$fp2 = fopen($FILE2, "a+");
+							fwrite($fp2, $endereco);
+							fclose($fp2);
+							fclose($fp);
+
+							exit("Item nao disponivel para recebimento. Entre em contato com seu fornecedor. Atencao: Esta tentativa de acesso foi identificada e registrada. O uso indevido de dispositivos e licencas, assim como a tentativa de acesso nao autorizado configuram infracao prevista no codigo penal brasileiro e estao sujeitas a acoes judiciais.");
 						}
 					fclose($fp);
 					}	

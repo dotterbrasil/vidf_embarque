@@ -178,7 +178,14 @@ function envio(){
 
 texto_alerta = "Dados Invalidos!";
 
-if (document.location.href="recebimento") { valida = 1; }
+if (document.location.href="recebimento")
+	{
+	valida = 1;
+	} else {
+		if (document.formulario.fdestino.value="") {valida = -1;}
+		if (document.formulario.ftransportadora.value="") {valida = -1;}
+		if (document.formulario.fnatureza.value="") {valida = -1;}
+		}
 
 if (valida) {
 		parent.VID.formulario.submit();
