@@ -108,7 +108,7 @@ valida = validacnpj(entrada);
 }
 
 function validadestino(){
-alert(document.formulario.fdestino.value.substring(0,14));
+
 	entrada = document.formulario.fdestino.value.substring(0,14);
 	valida = validacnpj(entrada);
 	validatransportadora();
