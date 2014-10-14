@@ -25,7 +25,7 @@ document.getElementById("senha").innerHTML = "<iframe name='otp' id='otp' width=
 var iframe_senha = document.getElementById("otp").contentWindow.document;
 iframe_senha.open();
 
-iframe_senha.write("<br><br>Senha OTP:<BR>");
+iframe_senha.write("Senha OTP:<BR>");
 for(i=1;i<5;i++) {
 	digito = Math.floor((Math.random() * 10));
 	iframe_senha.write("<img src=imagens/"+digito+".gif>");
