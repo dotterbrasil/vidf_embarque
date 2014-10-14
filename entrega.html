@@ -41,11 +41,11 @@ iframe_senha.close();
 function chama_suporte() {
 
 //contra_senha = prompt("Digite a senha OTP para confirmar o registro dos dados.");
-contra_senha = document.otp.contra_senha.value;
+contra_senha = document.otp.contra_senha.value;alert(contra_senha+" - "+senha);
 
 if (contra_senha == senha) { document.getElementById("senha").innerHTML = "";
 
-	document.getElementById("janela").innerHTML = "<iframe name='VID' id='VID' width='400px' height='300px'></iframe>";
+	document.getElementById("janela").innerHTML = "Mensagens:<br><iframe name='VID' id='VID' width='400px' height='300px'></iframe>";
 
 	var iframeDoc = document.getElementById("VID").contentWindow.document;
 	iframeDoc.open();
@@ -149,7 +149,7 @@ Foram encontrados <input type="text" name="registros" id="registros" size="5" re
 
 </div>
 
-<div name="janela" id="janela" style="position:absolute;left:650px; top:10px ">Mensagens:<br>
+<div name="janela" id="janela" style="position:absolute;left:650px; top:10px ">
 </div>
 
 <div name="senha" id="senha" style="position:absolute;left:450px; top:200px ">
