@@ -1,6 +1,8 @@
 <?php
 
 $cnpj_licenca = "00762956000120";
+$empresa = "bbraun";
+$caminho = "../../".$empresa."/";
 
 $sucesso = 0;
 $falha = 0;
@@ -39,7 +41,7 @@ $licenca = "../licencas/".$id.".lic";
 $licenca = str_replace("Plataforma: ","",$licenca);
 $licenca = str_replace(" - UUID: ","",$licenca);
 
-if(file_exists($licenca)) {
+if(1==1) {
 
 	for ($x=0; $x<$contador; $x++)
   		{
@@ -57,7 +59,7 @@ if(file_exists($licenca)) {
 
 				$endereco = $anvisa."/".$lote."/".$serial;
 
-				$FILE = "../".$endereco.".vid";
+				$FILE = $caminho.$endereco.".vid";
 
 				//verifica se IUM existe
 				if(file_exists($FILE)) {
@@ -71,7 +73,7 @@ if(file_exists($licenca)) {
 						$destino_anterior = substr($historico,(strrpos($historico,"Destino:")+9),14);
 						if($destino_anterior!=$cnpj_licenca) {
 							$endereco = date("d/m/Y - h:i:sa")." - ".$endereco." - Remessa sem custodia: ".$cnpj_licenca." - IP: ".$_SERVER["REMOTE_ADDR"]." - HOST: ".$_SERVER["REMOTE_HOST"]." - PORT: ".$_SERVER["REMOTE_PORT"].chr(10).chr(13)."\r\n";
-							$FILE2 = "../alertas/log_de_erros.txt";
+							$FILE2 = $caminho."alertas/log_de_erros.txt";
 							$fp2 = fopen($FILE2, "a+");
 							fwrite($fp2, $endereco);
 							fclose($fp2);
@@ -82,7 +84,7 @@ if(file_exists($licenca)) {
 						//verifica se o item esta disponivel para remessa
 						if((substr($historico,(strrpos($historico,"Natureza:")+10),3)!="(2)") AND (substr($historico,(strrpos($historico,"Natureza:")+10),3)!="(4)")) {
 							$endereco = date("d/m/Y - h:i:sa")." - ".$endereco." - Remessa sem custodia: ".$cnpj_licenca." - IP: ".$_SERVER["REMOTE_ADDR"]." - HOST: ".$_SERVER["REMOTE_HOST"]." - PORT: ".$_SERVER["REMOTE_PORT"].chr(10).chr(13)."\r\n";
-							$FILE2 = "../alertas/log_de_erros.txt";
+							$FILE2 = $caminho."alertas/log_de_erros.txt";
 							$fp2 = fopen($FILE2, "a+");
 							fwrite($fp2, $endereco);
 							fclose($fp2);
@@ -103,7 +105,7 @@ if(file_exists($licenca)) {
 					//faz gravacao e registra ocorrencia de eventual falha
 					if(!fwrite($fp, $conteudo2)) {
 						$endereco = date("d/m/Y - h:i:sa")." - Falha ao gravar registro - ".$endereco."\r\n";
-						$FILE2 = "../alertas/log_de_erros.txt";
+						$FILE2 = $caminho."alertas/log_de_erros.txt";
 						$fp2 = fopen($FILE2, "a+");
 						fwrite($fp2, $endereco);
 						fclose($fp2);
@@ -117,7 +119,7 @@ if(file_exists($licenca)) {
 					else {
 						//regista tentativa de gravacao em registro inexistente
 						$endereco = date("d/m/Y - h:i:sa")." - ".$endereco." - IP: ".$_SERVER["REMOTE_ADDR"]." - HOST: ".$_SERVER["REMOTE_HOST"]." - PORT: ".$_SERVER["REMOTE_PORT"].chr(10).chr(13)."\r\n";
-						$FILE2 = "../alertas/log_de_erros.txt";
+						$FILE2 = $caminho."alertas/log_de_erros.txt";
 						$fp2 = fopen($FILE2, "a+");
 						fwrite($fp2, $endereco);
 						fclose($fp2);
@@ -133,7 +135,7 @@ if(file_exists($licenca)) {
 
 //registra tentativa de acesso nao autorizado
 $licenca = date("d/m/Y - h:i:sa")." - ".$licenca." - IP: ".$_SERVER["REMOTE_ADDR"]." - HOST: ".$_SERVER["REMOTE_HOST"]." - PORT: ".$_SERVER["REMOTE_PORT"].chr(10).chr(13)."\r\n";
-$FILE2 = "../alertas/log_de_erros.txt";
+$FILE2 = $caminho."alertas/log_de_erros.txt";
 $fp2 = fopen($FILE2, "a+");
 fwrite($fp2, $licenca);
 fclose($fp2);
