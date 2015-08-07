@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.br.dotter.vidf_embarque"
+        id        = "com.br.dotter.vidf_expedicao"
         version   = "1.0.0">
-    <name>VIDF - Embarque</name>
+    <name>VIDF - Expedicao</name>
 
     <description>
-        VIrtual ID Farma - modulo de embarque.
+        Virtual ID Farma - modulo de expedicao e recebimento.
     </description>
 
     <author href="http://www.dotter.com.br" email="eduardo@dotter.com.br">
