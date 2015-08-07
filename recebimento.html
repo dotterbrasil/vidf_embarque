@@ -117,16 +117,11 @@ background-position: 5px 10px;
 <INPUT TYPE="text" NAME="flote" id="flote" MAXLENGTH="20" SIZE="20" readonly="readonly">
 </div>
 
-<div style="position:absolute;left:850px; top:330px "><font size="3">Operacao: <br>
-
-<input type="button" value="REGISTRA" style="width: 155px; height: 70px; font-size: 20px; margin: 1em 1em 1em 0;" onClick="validaArquivo()"><BR>
-<INPUT TYPE="button" VALUE="Entrega" style="width: 155px; height: 70px; font-size: 20px; margin: 0em 1em 1em 0;" onClick="document.location.href='entrega.html'"><BR>
-<input type="button" value="Captura" style="width: 155px; height: 70px; font-size: 20px; margin: 0em 1em 1em 0;" onclick="startScan()"><BR>
-<input type="button" value="Gera Senha"  style="width: 155px; height: 70px; font-size: 20px; margin: 0em 1em 1em 0;" onClick="senha_otp()">
-
+<div style="position:absolute;left:450px; top:40px ">
+<INPUT TYPE="button" VALUE="Entrega >>" style="width: 155px; height: 70px; font-size: 20px; margin: 0em 1em 1em 0;" onClick="document.location.href='entrega.html'">
 </div>
 
-<div style="position:absolute;left:50px; top:330px ">
+<div style="position:absolute;left:50px; top:370px ">
 
 
 <BR>_____________________________________________________________________________________<BR>
@@ -135,7 +130,7 @@ background-position: 5px 10px;
 
 <INPUT TYPE="hidden" NAME="conteudo" id="conteudo">
 <BR>
-<BR><BR>Registro para Processamento em Lote:<BR>
+<BR>Registro para Processamento em Lote:<BR>
 <TEXTAREA NAME="texto" id="texto" form="formulario" rows=10 cols=70 readonly="readonly"></TEXTAREA>
 <input type="hidden" name="dados" id="dados">
 <BR>
@@ -143,6 +138,14 @@ background-position: 5px 10px;
 Foram encontrados <input type="text" name="registros" id="registros" size="5" readonly="readonly"> registos com <INPUT TYPE="text" NAME="campos" id="campos" readonly="readonly" size="2"> campos.
 
 </form>
+
+</div>
+
+<div style="position:absolute;left:100px; top:300px "><font size="3">Operacao:
+
+<input type="button" value="(1) Captura" style="width: 155px; height: 70px; font-size: 20px; margin: 0em 1em 1em 0;" onclick="startScan()">
+<input type="button" value="(2) Gera Senha"  style="width: 155px; height: 70px; font-size: 20px; margin: 0em 1em 1em 0;" onClick="senha_otp()">
+<input type="button" value="(3) REGISTRA" style="width: 155px; height: 70px; font-size: 20px; margin: 1em 1em 1em 0;" onClick="validaArquivo()">
 
 </div>
 
